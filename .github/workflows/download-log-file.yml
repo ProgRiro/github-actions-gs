@@ -1,0 +1,10 @@
+name: download-log-file
+on: [push]
+jobs:
+  job-two:
+    name: Download Log File
+    steps:
+      - name: Download a single artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: job-one-output-log-file
