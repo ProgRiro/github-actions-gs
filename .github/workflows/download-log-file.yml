@@ -1,8 +1,10 @@
 name: download-log-file
 on: [push]
+
 jobs:
   job-two:
     name: Download Log File
+    runs-on: ubuntu-latest
     steps:
       - name: Download a single artifact
         uses: actions/download-artifact@v2
