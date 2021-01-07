@@ -31,7 +31,7 @@ jobs:
   job-two:
     name: Download Log File
     runs-on: ubuntu-latest
-    needs: job-one
+    needs: [check-jest-version, job-one]
     steps:
       - name: Download a single artifact
         uses: actions/download-artifact@v2
