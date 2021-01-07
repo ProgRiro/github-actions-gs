@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-      - run: npm install -g jest
-      - run: jest -v
         with:
           node-versoin: ${{ matrix.node }}
+      - run: npm install -g jest
+      - run: jest -v
