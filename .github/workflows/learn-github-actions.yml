@@ -13,3 +13,27 @@ jobs:
           node-versoin: ${{ matrix.node }}
       - run: npm install -g jest
       - run: jest -v
+
+  job-one:
+    name: Save output
+    runs-on: ubuntu-latest
+    needs: check-jest-version
+    steps:
+      - shell: bash
+        run: |
+          expr 1 + 1 > job-one-output.log
+      - name: Upload output file
+        uses: actions/upload-artifact@v1
+        with:
+          name: job-one-output-log-file
+          path: job-one-output.log
+
+  job-two:
+    name: Download Log File
+    runs-on: ubuntu-latest
+    needs: job-one
+    steps:
+      - name: Download a single artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: job-one-output-log-file
